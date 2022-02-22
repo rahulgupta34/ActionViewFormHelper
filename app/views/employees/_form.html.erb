@@ -1,0 +1,159 @@
+<%= form_with model: employee do |form| %>
+    <div class="row justify-content-center">
+        <div class="col-lg-3 mt-3">
+            <div class="form-group">
+                <%= form.label :name %>
+                <%= form.text_field :name, class:"form-control" %>
+            </div>
+        </div>
+    </div>
+        <% employee.errors.full_messages_for(:name).each do |message| %>
+                <p class="text-center text-danger"> <%= message %> </p>
+        <% end %>
+    <div class="row justify-content-center">
+        <div class="col-lg-3 mt-3">
+            <div class="form-group">
+                <%= form.label :email %>
+                <%= form.email_field :email, class:"form-control" %>
+            </div>
+        </div>
+    </div>
+        <% employee.errors.full_messages_for(:email).each do |message| %>
+                <p class="text-center text-danger"> <%= message %> </p>
+        <% end %>
+
+        <% if params[:action]!= "edit"  %>
+    <div class="row justify-content-center">
+        <div class="col-lg-3 mt-3">
+            <div class="form-group">
+                <%= form.label :password %>
+                <%= form.password_field :password, class:"form-control" %>
+            </div>
+        </div>
+    </div>
+            <% employee.errors.full_messages_for(:password).each do |message| %>
+                    <p class="text-center text-danger"> <%= message %> </p>
+            <% end %>
+        <% end %>
+    <div class="row justify-content-center ">
+        <div class="col-lg-3 mt-3">
+            <div class="form-group">
+                <%= form.label :birth_date %>
+                <%= form.date_select :birth_date,{}, class:"form-control m-1" %>
+            </div>
+        </div>
+    </div>
+<% employee.errors.full_messages_for(:birth_date).each do |message| %>
+                <p class="text-center text-danger"> <%= message %> </p>
+        <% end %>
+    <div class="row justify-content-center ">
+        <div class="col-lg-1 mt-3">
+            <%= form.label :gender %>
+        </div>
+        <div class="col-lg-1 mt-3">
+            <div class="form-group">
+                <%= form.radio_button :gender, "male" %>
+                <%= form.label :gender, "Male" %>                
+            </div>
+        </div>
+        <div class="col-lg-1 mt-3">
+            <div class="form-group">
+                <%= form.radio_button :gender, "female" %>
+                <%= form.label :gender, "Female" %>              
+            </div>
+        </div>
+    </div>
+<% employee.errors.full_messages_for(:gender).each do |message| %>
+                <p class="text-center text-danger"> <%= message %> </p>
+        <% end %>
+    <div class="row justify-content-center ">
+        <div class="col-lg-1 mt-3">
+            <%= form.label :hobbies %>
+        </div>
+        <div class="col-lg-1 mt-3">
+            <div class="form-group">
+                <%= form.check_box :hobbies %>
+                <%= form.label :check_box, "Java" %>                
+            </div>
+        </div>
+        <div class="col-lg-1 mt-3">
+            <div class="form-group">
+                <%= form.check_box :cpp %>
+                <%= form.label :check_box, "CPP" %>              
+            </div>
+        </div>
+    </div>    
+
+    <div class="row justify-content-center ">
+        <div class="col-lg-3 mt-3">
+            <div class="form-group">
+                <%= form.label :address %>
+                <%= form.text_area :address, class:"form-control m-1" %>
+            </div>
+        </div>
+    </div>
+<% employee.errors.full_messages_for(:address).each do |message| %>
+                <p class="text-center text-danger"> <%= message %> </p>
+        <% end %>
+    <div class="row justify-content-center ">
+        <div class="col-lg-3 mt-3">
+            <div class="form-group">
+                <%= form.label :mobile %>
+                <%= form.number_field :mobile, class:"form-control m-1" %>
+            </div>
+        </div>
+    </div>
+    <% if params[:action] != "edit" %>
+    <div class="row justify-content-center ">
+        <div class="col-lg-3 mt-3">
+            <div class="form-group">
+                <%= form.label :document %>
+                <%= form.file_field :document, class:"form-control m-1" %>
+            </div>
+        </div>
+    </div>
+    <% employee.errors.full_messages_for(:document).each do |message| %>
+                <p class="text-center text-danger"> <%= message %> </p>
+        <% end %>
+    <% end %>
+   <%= form.fields_for :addresses do |form_address| %>
+         <div class="row justify-content-center ">
+            <div class="col-lg-3 mt-3">
+                <div class="form-group">
+                    <%= form_address.label :house_name %>
+                    <%= form_address.text_field :house_name, class:"form-control m-1" %>
+                </div>
+            </div>
+         </div>
+
+         <div class="row justify-content-center ">
+            <div class="col-lg-3 mt-3">
+                <div class="form-group">
+                    <%= form_address.label :street_name %>
+                    <%= form_address.text_field :street_name, class:"form-control m-1" %>
+                </div>
+            </div>
+         </div>
+
+         <div class="row justify-content-center ">
+            <div class="col-lg-3 mt-3">
+                <div class="form-group">
+                    <%= form_address.label :road %>
+                    <%= form_address.text_field :road, class:"form-control m-1" %>
+                </div>
+            </div>
+         </div>
+
+   <% end %>
+
+
+    <div class="row justify-content-center ">
+        <div class="col-lg-3 mt-3">
+            <div class="form-group">
+                <%= form.submit "Add Employee", class:"btn btn-success" %>
+            </div>
+        </div>
+    </div>
+
+<% end %>
+
