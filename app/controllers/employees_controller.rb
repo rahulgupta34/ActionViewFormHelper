@@ -23,15 +23,12 @@ class EmployeesController < ApplicationController
   
   end
 
-  def edit
-    addresses = Employee.find(params[:id])
+  def edit    
   end
 
   def update
-    
-    @employee.document = params[:employee][:document].original_filename
-  
-    if @employee.update(employee_params)
+    # @employee.document = params[:employee][:document].original_filename    
+    if @employee.update(employee_edit_params)
       redirect_to employees_path
     else
       render :edit, status: :unprocessable_entity
@@ -61,5 +58,9 @@ class EmployeesController < ApplicationController
   private
   def employee_params
     params.require(:employee).permit(:name,:email,:password,:birth_date,:gender,:hobbies,:cpp,:address,:mobile,:document,addresses_attributes: [:house_name,:street_name,:road])
+  end
+
+  def employee_edit_params
+    params.require(:employee).permit(:name,:email,:birth_date,:gender,:hobbies,:cpp,:address,:mobile,addresses_attributes: [:id,:house_name,:street_name,:road])
   end
 end

@@ -21,6 +21,8 @@
         <% employee.errors.full_messages_for(:email).each do |message| %>
                 <p class="text-center text-danger"> <%= message %> </p>
         <% end %>
+
+        <% if params[:action]!= "edit"  %>
     <div class="row justify-content-center">
         <div class="col-lg-3 mt-3">
             <div class="form-group">
@@ -29,8 +31,9 @@
             </div>
         </div>
     </div>
-<% employee.errors.full_messages_for(:password).each do |message| %>
-                <p class="text-center text-danger"> <%= message %> </p>
+            <% employee.errors.full_messages_for(:password).each do |message| %>
+                    <p class="text-center text-danger"> <%= message %> </p>
+            <% end %>
         <% end %>
     <div class="row justify-content-center ">
         <div class="col-lg-3 mt-3">
@@ -100,7 +103,7 @@
             </div>
         </div>
     </div>
-
+    <% if params[:action] != "edit" %>
     <div class="row justify-content-center ">
         <div class="col-lg-3 mt-3">
             <div class="form-group">
@@ -109,7 +112,10 @@
             </div>
         </div>
     </div>
-
+    <% employee.errors.full_messages_for(:document).each do |message| %>
+                <p class="text-center text-danger"> <%= message %> </p>
+        <% end %>
+    <% end %>
    <%= form.fields_for :addresses do |form_address| %>
          <div class="row justify-content-center ">
             <div class="col-lg-3 mt-3">
@@ -140,9 +146,7 @@
 
    <% end %>
 
-<% employee.errors.full_messages_for(:document).each do |message| %>
-                <p class="text-center text-danger"> <%= message %> </p>
-        <% end %>
+
     <div class="row justify-content-center ">
         <div class="col-lg-3 mt-3">
             <div class="form-group">
