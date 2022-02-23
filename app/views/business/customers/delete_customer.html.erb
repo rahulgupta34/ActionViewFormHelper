@@ -1,0 +1,21 @@
+
+<%= form_with do |delete_customer| %>
+        <div class="row justify-content-center">
+            <div class="col-lg-3">
+               <div class="form-group">
+                       <%= delete_customer.label :customer_id %>
+                       <%= delete_customer.text_field :customer_id, class:"form-control", placeholder:"Enter Customer ID" %>  
+               </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-3">
+               <div class="form-group">
+                 <%= delete_customer.submit "Delete", class:"btn btn-primary mt-2" %>  
+               </div>
+            </div>
+        </div>
+
+<% end %>
+

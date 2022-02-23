@@ -1,0 +1,27 @@
+<h1 class="text-center m-4"> Customers </h1>
+<table class="table">
+<%= link_to "Add Customer", new_business_customer_path, class:"btn btn-success m-4" %>
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Age</th>
+      <th scope="col">Addess</th>
+      <th scope="col">Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @customers.each do |customer| %>
+    <tr>
+      <th scope="row"><%= customer.id %></th>
+      <td><%= customer.name %></td>
+      <td><%= customer.email %></td>
+      <td><%= customer.age %></td>
+      <td><%= customer.address %></td>
+      <td><%= link_to "Edit", edit_business_customer_path(customer.id), class:"btn btn-info" %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
