@@ -19,4 +19,7 @@ Rails.application.routes.draw do
   get "/delete_customer", to: "business/customers#delete_customer"
   post "/delete_customer", to: "business/customers#delete_customer"
   get "/search", to: "business/customers#search"
+
+  get "/name_preview", to: "business/customers#name_preview"
+  post "/name_preview", to: "business/customers#name_preview"
 end

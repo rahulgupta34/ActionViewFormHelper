@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
 
   def destroy
     @order.destroy
-   
+    redirect_to orders_path
   end
 
   def show
@@ -32,6 +32,7 @@ class OrdersController < ApplicationController
   def order_find
     @order = Order.find(params[:id])
   end
+  
   private
   def order_params
     params.require(:order).permit(:quantity, :total_price, :status)

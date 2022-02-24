@@ -37,6 +37,12 @@ class Business::CustomersController < ApplicationController
      end
   end
 
+  def name_preview
+     if params[:query].present?
+      @name_preview = Customer.find(params[:query])
+     end
+  end
+
   def create
     @customer = Customer.new(customer_params)
     if @customer.save

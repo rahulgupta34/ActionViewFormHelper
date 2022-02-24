@@ -1,0 +1,46 @@
+<%= form_with url: name_preview_path, method: :get do |form| %>
+   <div class="row justify-content-center">
+        <div class="col-lg-3 mt-3">
+            <div class="form-group">
+                <%= form.label :query, "Enter Customer ID" %>
+                <%= form.number_field :query, class:"form-control",placeholder: "Enter Customer Name" %>
+            </div>
+        </div>
+    </div>
+
+     <div class="row justify-content-center ">
+        <div class="col-lg-3 mt-3">
+            <div class="form-group">
+                <%= form.submit "Search Customer", class:"btn btn-success" %>
+            </div>
+        </div>
+    </div>
+
+<% end %>
+
+<% if !@name_preview.nil?   %>
+       
+        <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Age</th>
+                <th scope="col">Address</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+                <tr>
+                <th scope="row"> <%= @name_preview.id  %> </th>
+                <td><%= @name_preview.name  %></td>
+                <td><%= @name_preview.email  %></td>
+                <td><%= @name_preview.age  %></td>
+                <td><%= @name_preview.address  %></td>
+                </tr>
+         
+            </tbody>
+        </table>
+<% end %>
+
