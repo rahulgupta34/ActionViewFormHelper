@@ -1,0 +1,41 @@
+<h1 class="text-center m-3"> Add Order </h1>
+
+<%= form_with model: @order do |order_form| %>
+
+    <div class="row justify-content-center mt-2">
+      <div class="col-lg-3">
+           <div class="form-group">
+            <%= order_form.label :quantity, style: "display: block" %>
+            <%= order_form.text_field :quantity, class:"form-control" %>
+          </div>
+      </div>
+  </div>
+
+  <div class="row justify-content-center mt-2">
+      <div class="col-lg-3">
+           <div class="form-group">
+            <%= order_form.label :total_price, style: "display: block" %>
+            <%= order_form.text_field :total_price, class:"form-control" %>
+          </div>
+      </div>
+  </div>
+
+  <div class="row justify-content-center mt-2">
+      <div class="col-lg-3">
+           <div class="form-group">
+            <%= order_form.label :status, style: "display: block" %>
+            <%= order_form.text_field :status, class:"form-control" %>
+          </div>
+      </div>
+  </div>
+
+  <div class="row justify-content-center mt-4">
+      <div class="col-lg-3">
+          <div>
+            <%= order_form.submit "Edit Order", class:"btn btn-success" %>
+          </div>
+      </div>
+  </div>
+
+<% end %>
+

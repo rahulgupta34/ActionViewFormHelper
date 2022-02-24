@@ -1,0 +1,32 @@
+<p style="color: green"><%= notice %></p>
+
+<h1 class="text-center m-3">Products</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Status</th>
+      <th scope="col">Show</th>
+      <th scope="col">Edit</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+  <% @products.each do |product| %>
+    <tr>
+      <th scope="row"><%= product.id %></th>
+      <td><%= product.name %></td>
+      <td><%= product.price %></td>
+      <td><%= product.status %></td>
+      <td><%= link_to "Show", product_path(product.id), class:"btn btn-primary" %></td>
+      <td><%= link_to "Edit ", edit_product_path(product.id), class:"btn btn-success" %></td>
+      
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
