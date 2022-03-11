@@ -1,0 +1,24 @@
+<h1>New student</h1>
+
+<%= render "form", student: @student %>
+
+<br>
+
+<div>
+  <%= link_to "Back to students", students_path %>
+</div>
+
+<script>
+window.addEventListener("load", () => {
+  const element = document.querySelector("#student");
+  element.addEventListener("ajax:success", (event) => {
+    const [_data, _status, xhr] = event.detail;
+    console.log(xhr.responseText);
+    element.insertAdjacentHTML("beforeend", xhr.responseText);
+  });
+  element.addEventListener("ajax:error", () => {
+    element.insertAdjacentHTML("beforeend", "<p>ERROR</p>");
+  });
+});
+
+</script>

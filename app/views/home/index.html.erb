@@ -1,0 +1,36 @@
+<h1>Home Index</h1>
+<p id="para"> Find me </p>
+<a href="#" onclick="alert('Hello Rahul Gupta');event.preventDefault();">print message</a>
+<br>
+
+<a href="#" onclick="paintIt('red','green')">Change The Background Color</a>
+<br><br>
+<a href="#" data-background-color="#990000">Paint it red</a><br><br>
+<a href="#" data-background-color="#009900" data-text-color="#FFFFFF">Paint it green</a><br><br>
+<a href="#" data-background-color="#000099" data-text-color="#FFFFFF">Paint it blue</a>
+
+
+<script>
+  window.paintIt = function(color,backgroundColor){
+        document.body.style.backgroundColor = backgroundColor
+        document.getElementById("para").style.color = color
+        event.preventDefault()
+  }
+
+    function myFun(element,background,text){
+        element.style.color = text
+        element.style.backgroundColor = background
+    }
+    
+    window.addEventListener("load",() => {
+        let links = document.querySelectorAll("a[data-background-color]")
+        links.forEach((element,index,array) => {
+                element.addEventListener("click",(event) => {
+                    event.preventDefault();
+                   const {backgroundColor,textColor} = element.dataset // this is object destructuring in js
+                    myFun(element,backgroundColor,textColor)
+                });
+        });
+    });
+
+</script>
