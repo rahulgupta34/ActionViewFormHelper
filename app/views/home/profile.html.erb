@@ -1,0 +1,28 @@
+<h1 class="text-center m-4"> Alter Your Profile </h1>
+
+<%= form_with(url: profile_path, method: :post, local: false) do |form| %>   
+     <div class="row justify-content-center mt-3">
+          <div class="col-lg-3">
+                 <div class="form-group">
+                    <%= form.label :email, style: "display: block" %>
+                    <%= form.text_field :email, class:"form-control", onkeyup: "alert('hello')" %>
+                 </div>
+          </div>
+     </div>
+
+     <div class="row justify-content-center mt-2">
+        <div class="col-lg-3">
+                <%= form.submit "Change Email", class:"btn btn-success" %>
+        </div>
+     </div>
+
+<% end %>
+
+
+
+<script type="text/javascript">
+ window.addEventListener("load", () => {
+  
+});
+
+</script>
