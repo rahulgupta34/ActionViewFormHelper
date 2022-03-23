@@ -72,3 +72,4 @@ group :test do
 end
 
 gem "pry"
+gem 'carrierwave', '~> 2.2', '>= 2.2.2'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_23_101033) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_23_163618) do
   create_table "addresses", force: :cascade do |t|
     t.string "house_name"
     t.string "street_name"
@@ -61,6 +61,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_23_101033) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "avatar"
+    t.string "images"
   end
 
   add_foreign_key "addresses", "employees"
