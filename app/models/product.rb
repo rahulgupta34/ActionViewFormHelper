@@ -4,5 +4,5 @@ class Product < ApplicationRecord
     mount_uploaders :images, AvatarUploader
     serialize :images, JSON
     has_many :orders, dependent: :destroy
-
+ 
 end

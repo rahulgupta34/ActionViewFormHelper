@@ -1,32 +1,32 @@
 <div id="<%= dom_id product %>">
-  <p>
-    <strong>Name:</strong>
-    <%= product.name %>
-  </p>
+    <p>
+        <strong>Name:</strong>
+        <%= product.name %>
+    </p>
 
-  <p>
-    <strong>Price:</strong>
-    <%= product.price %>
-  </p>
+    <p>
+        <strong>Price:</strong>
+        <%= product.price %>
+    </p>
 
-  <p>
-    <strong>Status:</strong>
-    <%= product.status %>
-  </p>
+    <p>
+        <strong>Status:</strong>
+        <%= product.status %>
+    </p>
 
-  <p>
-    <strong>Image:</strong>
-   <% if !product.avatar.file.nil? %>
-     <%= image_tag(product.avatar.url, size:"100x100") %>
-   <% end %>
-  </p>
+    <p>
+        <strong>Image:</strong>
+        <% if !product.avatar.file.nil? %>
+            <%= image_tag(product.avatar.thumbnail.url) %>
+        <% end %>
+    </p>
 
-   <p>
-    <strong>Images:</strong>
-    
-  <% product.images.each do |image_s| %>
-       <%= image_tag(image_s.url, size: "100x100") %>
-  <% end %>
-  </p>
+    <p>
+        <strong>Images:</strong>
+
+        <% product.images.each do |image_s| %>
+            <%= image_tag(image_s.small_thumbnail.url) %>
+        <% end %>
+    </p>
 
 </div>

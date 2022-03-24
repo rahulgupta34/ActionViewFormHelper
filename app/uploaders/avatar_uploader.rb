@@ -1,7 +1,7 @@
 class AvatarUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  # include CarrierWave::RMagickP
+  include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -13,6 +13,15 @@ class AvatarUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
+  process resize_to_fit: [800,800]
+
+  version :thumbnail do 
+    process resize_to_fill: [200,200]
+  end
+
+  version :small_thumbnail, from_version: :thumbnail do
+     process resize_to_fill: [50,50]
+  end
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url(*args)
   #   # For Rails 3.1+ asset pipeline compatibility:
@@ -35,8 +44,12 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Add an allowlist of extensions which are allowed to be uploaded.
   # For images you might use something like this:
-  # def extension_allowlist
-  #   %w(jpg jpeg gif png)
+  def extension_allowlist
+    %w(jpg png jpeg)
+  end
+
+  # def content_type_allowlist
+  #   /pdf\//
   # end
 
   # Override the filename of the uploaded files:
@@ -44,4 +57,5 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+  
 end
