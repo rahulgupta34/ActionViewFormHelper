@@ -1,0 +1,25 @@
+<p style="color: green"><%= notice %></p>
+
+<h1 class="text-center m-4">Users</h1>
+
+<div id="users">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Picture</th>
+                <th scope="col">Show</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @users.each do |user| %>
+                <%= render user %>
+            <% end %>
+        </tbody>
+    </table>
+
+</div>
