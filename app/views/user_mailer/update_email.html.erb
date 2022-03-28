@@ -4,10 +4,7 @@
             You have updated your email successfully <span style="color:green;"><%= @user.email %></span>
         </p>
         <p>
-            <%= image_tag(@user.picture.thumbnail.url) %>
-        </p>
-          <img src="https://picsum.photos/200/200" />
-        <p>
+            <%= image_tag attachments['filename.jpg'].url, size: "100x100" %>
             Here Is my First Deployed Project Link, You Can Check Here,
             <%= link_to "Click Here", @deployed %>
         </p>
