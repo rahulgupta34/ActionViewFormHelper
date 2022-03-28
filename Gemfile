@@ -77,3 +77,8 @@ end
 
 gem 'carrierwave', '~> 2.0'
 gem "letter_opener", group: :development
+gem 'activeadmin'
+gem 'devise'
+gem 'sass-rails'
+gem 'cancancan'
+gem 'draper'
