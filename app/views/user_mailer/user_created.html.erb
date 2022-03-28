@@ -1,0 +1,17 @@
+
+        <h1>Welcome to Simform ,
+            <%= @user.name %></h1>
+        <p>
+            You have successfully signed up to Simform,
+                  your username is:
+            <%= @user.name %>.<br>
+        </p>
+        <p>
+            <%= image_tag(@user.picture.thumbnail.url) %>
+        </p>
+          <img src="https://picsum.photos/200/300" />
+        <p>
+            Here Is my First Deployed Project Link, You Can Check Here,
+            <%= link_to "Click Here", @deployed %>
+        </p>
+        <p>Thanks for joining and have a great day!</p>
