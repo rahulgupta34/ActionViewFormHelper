@@ -1,0 +1,40 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="row justify-content-center">
+    <div class="col-lg-2">
+        <p>Name</p>
+    </div>
+
+    <div class="col-lg-2">
+        <p><%= @user.name %></p>
+    </div>
+
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-lg-2">
+        <p>Email</p>
+    </div>
+
+    <div class="col-lg-2">
+        <p><%= @user.email %></p>
+    </div>
+
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-lg-2">
+        <p>Picture</p>
+    </div>
+
+    <div class="col-lg-2">
+        <p><%= image_tag(@user.picture.thumbnail.url) %></p>
+    </div>
+
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-lg-3">
+        <%= link_to "Back to users", users_path, class: "btn btn-primary m-3" %>
+    </div>
+</div>

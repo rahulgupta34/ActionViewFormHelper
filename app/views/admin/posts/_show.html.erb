@@ -1,0 +1,18 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">TiTle</th>
+            <th scope="col">Body</th>
+            <th scope="col">Image</th>
+        </tr>
+    </thead>
+    <tbody>
+        <td><%= post_show.id %></td>
+        <td><%= post_show.title %></td>
+        <td><%= post_show.body %></td>
+        <%  if !post_show.picture.file.nil? %>
+         <td><%= image_tag post_show.picture.url, size: "100x100", style:"border-radius:50%;" %></td>
+        <% end %>
+    </tr>
+</tbody></table>
