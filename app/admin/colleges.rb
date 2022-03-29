@@ -6,6 +6,9 @@ ActiveAdmin.register College do
   # Uncomment all parameters which should be permitted for assignment
   #
   permit_params :name
+
+  filter :created_at, label: "Select Start & End Date"
+ 
   #
   # or
   #

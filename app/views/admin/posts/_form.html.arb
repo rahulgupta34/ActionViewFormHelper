@@ -1,0 +1,10 @@
+active_admin_form_for [:admin, resource]  do |f|
+  inputs :title, :body,:picture
+    panel 'Note*' do
+      ul do
+        li "All Fileds Are Mandatory"
+        li "Image type should be jpeg/jpg"
+      end
+    end
+  actions
+end
