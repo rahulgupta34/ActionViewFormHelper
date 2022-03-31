@@ -1,0 +1,27 @@
+<h1 class="text-center">display Data From API.</h1>
+<%= content_tag :table, role: :datatable, data: { url: testapi_path(format: :json)} do %>
+    <thead>
+        <tr>
+            <th scope="col">UserID</th>
+            <th scope="col">ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Body</th>
+            <th scope="col">Show</th>
+            <th scope="col">Comments</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <% @result.each do |result| %>
+            <tr>
+                <td><%= result["userId"] %></td>
+                <td><%= result["id"] %></td>
+                <td><%= result["title"] %></td>
+                <td><%= truncate(result["body"]) %></td>
+                <td><%= link_to "Show", "/testapi/#{result["id"]}" %></td>
+                <td><%= link_to "Show Comments", "/posts/#{result["id"]}" %></td>
+            </tr>
+        <% end %>
+    </tbody>
+<% end %>
+
