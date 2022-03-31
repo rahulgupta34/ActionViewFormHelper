@@ -75,3 +75,8 @@ group :test do
 end
 
 gem "sidekiq"
+gem "rest-client"
+
+gem 'rails-assets-jquery', source: 'https://rails-assets.org'
+gem 'rails-assets-datatables', source: 'https://rails-assets.org'
+gem 'kaminari'

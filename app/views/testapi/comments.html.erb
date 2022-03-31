@@ -1,0 +1,23 @@
+<h1 class="text-center m-3">Commnets</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Post ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Body</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @result.each do |result| %>
+            <tr>
+                <td><%= result["postId"] %></td>
+                <td><%= result["name"] %></td>
+                <td><%= result["email"] %></td>
+                <td><%= truncate(result["body"]) %></td>
+                
+            </tr>
+        <% end %>
+    </tbody>
+    <%= link_to "Back", testapi_path, class:"btn btn-primary m-4" %>
+</table>
