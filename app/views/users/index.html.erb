@@ -1,7 +1,7 @@
 <p style="color: green"><%= notice %></p>
-
+<p>there are <%= @total_record %> records in data base.</p>
 <h1 class="text-center m-4">Users</h1>
-
+<%= paginate @users %>
 <div id="users">
     <table class="table">
         <thead>
@@ -20,6 +20,7 @@
                 <%= render user %>
             <% end %>
         </tbody>
+        
     </table>
 
 </div>
