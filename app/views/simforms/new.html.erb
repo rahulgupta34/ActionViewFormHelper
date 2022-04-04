@@ -1,0 +1,21 @@
+<%= simple_form_for  @simform do |f| %>
+   <div class="row">
+        <div class="col-lg-3">
+                 <%= f.error_notification %>
+        </div>
+   </div>
+   
+    <%= f.input :name, label: "Employee Name" %>
+
+    <%= f.input :title %>
+    <%= f.input :age, collection: 18..45, hint: "age should be in between 18 to 45.", prompt: "Select your age" %>
+    <%= f.input :email, label: "Employee Email ", placeholder: "help@example.com" %>
+    <%= f.input :password, hint: "length should be at least 6", input_html: { maxlength: 10 },required: false %>
+    <%= f.input :description %>
+    <%= f.input :date_of_joining, start_year: Date.today.year-5, order: [:day, :month, :year] %>
+    <%= f.input :join, checked_value: true, unchecked_value: false %>
+    <%= f.simple_fields_for :city do |nested_attr| %>
+        <%= nested_attr.input :name, label: "Enter Your City Name " %>
+    <% end %>
+    <%= f.button :submit, class:"btn btn-primary m-4" %>
+<% end %>

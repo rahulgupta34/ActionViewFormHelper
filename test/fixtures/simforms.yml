@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  title: MyString
+  password: MyString
+  age: 1
+  description: MyText
+  join: false
+  date_of_joining: 2022-04-01
+
+two:
+  name: MyString
+  title: MyString
+  password: MyString
+  age: 1
+  description: MyText
+  join: false
+  date_of_joining: 2022-04-01

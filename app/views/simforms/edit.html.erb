@@ -1,0 +1,14 @@
+
+<%= simple_form_for  @simform do |f| %>
+    <%= f.input :name, label: "Employee Name", disabled: true, hint: "You Cann't change your Name." %>
+
+    <%= f.input :title %>
+    <%= f.input :age, collection: 18..45, hint: "age should be in between 18 to 45.", prompt: "Select your age" %>
+    <%= f.input :email, label: "Employee Email ", placeholder: "help@example.com", disabled: true, hint: "You Cann't change your Email." %>
+
+    <%= f.input :description %>
+    <%= f.input :date_of_joining, start_year: Date.today.year-5, order: [:day, :month, :year] %>
+    <%= f.input :join, checked_value: true, unchecked_value: false %>
+    <%= f.select :name, City.all.pluck(:name) %>
+    <%= f.button :submit, class:"btn btn-primary m-4" %>
+<% end %>
