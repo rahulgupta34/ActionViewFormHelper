@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_14_094129) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_04_065640) do
   create_table "addresses", force: :cascade do |t|
     t.string "house_name"
     t.string "street_name"
@@ -25,6 +25,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_14_094129) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.string "name"
+    t.integer "simform_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["simform_id"], name: "index_cities_on_simform_id"
   end
 
   create_table "colleges", force: :cascade do |t|
@@ -75,6 +83,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_14_094129) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "simforms", force: :cascade do |t|
+    t.string "name"
+    t.string "title"
+    t.string "email"
+    t.string "password"
+    t.integer "age"
+    t.text "description"
+    t.boolean "join"
+    t.date "date_of_joining"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "students", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -103,5 +124,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_14_094129) do
   end
 
   add_foreign_key "addresses", "employees"
+  add_foreign_key "cities", "simforms"
   add_foreign_key "orders", "products"
 end

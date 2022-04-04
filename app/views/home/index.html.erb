@@ -1,0 +1,28 @@
+<h1 class="text-center mt-3">Home index</h1>
+<%= link_to "Add New Employee", new_simform_path %>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Age</th>
+            <th scope="col">Date Of Joining</th>
+            <th scope="col">Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @simforms.each do |simform| %>
+            <tr>
+                <td><%= simform.id %></td>
+                <td><%= simform.name %></td>
+                <td><%= simform.email %></td>
+                <td><%= simform.age %></td>
+                <td><%= simform.date_of_joining %></td>
+                <td><%= link_to "Edit", edit_simform_path(simform.id) %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

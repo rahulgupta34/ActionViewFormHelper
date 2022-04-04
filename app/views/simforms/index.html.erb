@@ -1,0 +1,24 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Age</th>
+            <th scope="col">Date Of Joining</th>
+            <th scope="col">Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @simforms.each do |simform| %>
+            <tr>
+                <td><%= simform.id %></td>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>mdo</td>
+                <td>Otto</td>
+                <td>mdo</td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
