@@ -1,1 +1,2 @@
-import {} from 'jquery-ujs'
+require("trix")
+require("@rails/actiontext")
