@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  resources :posts
   resources :colleges
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  
+  root "posts#index"
+  get "/history", to: "posts#history"
+  get "/posts/:id/undo", to: "posts#undo"
+  post "/posts/:id/undo", to: "posts#undo", as: :undo
 end
