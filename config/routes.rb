@@ -3,7 +3,13 @@ Rails.application.routes.draw do
   resources :colleges
   
   root "posts#index"
-  get "/history", to: "posts#history"
-  get "/posts/:id/undo", to: "posts#undo"
-  post "/posts/:id/undo", to: "posts#undo", as: :undo
+  resources :posts do 
+    member do 
+      get "versions", to: "posts#versions"
+      get "version/:version_id", to: "posts#version", as: "version"
+      post "revert/:version_id", to: "posts#revert", as: "revert"
+      post "restore", to: "posts#restore", as: "restore"
+    end
+  end
+  get "deleted", to: "posts#deleted"
 end

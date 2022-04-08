@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Previous Versions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @posts.each do |post| %>
+    <% unless post.try(:event) && (post.event == "create" ) %>
+            <tr>
+                <td><%= post.try(:reify) ? post.reify.title : post.title %></td>
+                <td><%= post.try(:reify)  ? post.reify.body : post.body %></td>
+                <td><%= link_to 'Show', post_path(post.item_id) %></td>
+                <td><%= link_to 'Edit', edit_post_path(post.item_id) %></td>
+                <td><% if params[:action] == "versions" %>
+                <td><%= link_to 'Preview This Version', version_post_path(post.item_id, post.id) %></td>
+                  <% end %></td>
+                  
+            </tr>
+             
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Back', posts_path %>

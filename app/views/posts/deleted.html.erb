@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Deleted Articles</h1>
+
+<table class="border">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Body</th>
+        </tr>
+    </thead>
+
+    <tbody class="border">
+        <% @posts.each do |post| %>
+            <tr class="border">
+                <td><%= post.reify.id %></td>
+                <td><%= post.reify.title %></td>
+                <td><%= post.reify.body %></td>
+                <td>
+                    <% if params[:action] == "deleted" %>
+                        <%= button_to 'Restore This Article', restore_post_path(post.item_id), method: :post %>
+                    <% end %>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<br>
+
+    <%= link_to 'Back', posts_path %>

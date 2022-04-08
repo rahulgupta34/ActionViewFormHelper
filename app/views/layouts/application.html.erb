@@ -12,11 +12,5 @@
 
     <body>
         <%= yield %>
-
-        <div class="container">
-            <% flash.each do |key, value| %>
-                <%= value.html_safe %>
-            <% end %>
-        </div>
     </body>
 </html>

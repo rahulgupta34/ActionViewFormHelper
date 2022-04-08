@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[ show edit update destroy ]
-
+  before_action :set_post, only: %i[ show edit update destroy versions version revert]
+  before_action :set_version, only: [:version, :revert]
   # GET /posts or /posts.json
   def index
     @posts = Post.all
@@ -25,7 +25,7 @@ class PostsController < ApplicationController
    
     respond_to do |format|
       if @post.save
-        format.html { redirect_to post_url(@post), notice: "Post was successfully created." }
+        format.html { redirect_to posts_url, notice: "Post was successfully created." }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,8 +38,8 @@ class PostsController < ApplicationController
   def update
     @post = Post.find_by_id(params[:id])
   if @post.update(post_params)
-    flash[:success] = "Post was updated! #{make_undo_link}"
-    redirect_to post_path(@post)
+   
+    redirect_to posts_path
   else
     render 'edit'
   end
@@ -48,43 +48,54 @@ class PostsController < ApplicationController
   # DELETE /posts/1 or /posts/1.json
   def destroy
     @post.destroy
-    flash[:success] = "Post was deleted! #{make_undo_link}"
+   
     respond_to do |format|
       format.html { redirect_to posts_url, notice: "Post was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
-  def history
-    @versions = PaperTrail::Version.order('created_at DESC')
+  def versions
+    @posts = @post.versions
+    # binding.pry
   end
 
-  def undo
-    @post_version = PaperTrail::Version.find_by_id(params[:id])
-  
-    begin
-      if @post_version.reify
-        @post_version.reify.save
+  def version
+  end
+
+  def revert
+    @reverted_post = @version.reify
+    if @reverted_post.save
+      redirect_to @post, notice: "Article was successfully reverted."
+    else
+      render version
+    end
+  end
+
+  def deleted
+    @posts = PaperTrail::Version.where(item_type: "Post", event: "destroy").order(created_at: :desc)
+  end
+
+  def restore
+    @latest_version = Post.new(id: params[:id]).versions.last
+    if @latest_version.event == "destroy"
+      @post = @latest_version.reify
+      if @post.save
+        redirect_to posts_path, notice: "Article was successfully restored."
       else
-        @post_version.item.destroy
+        render :deleted
       end
-      flash[:success] = "Undid that..."
-    rescue
-      flash[:alert] = "Failed undoing the action..."
-    ensure
-      redirect_to root_path
     end
   end
-
-  private
-    def make_undo_link
-      view_context.link_to 'Undo that plz!', undo_path(@post.versions.last), method: :post
-    end
-
+ 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
+    end
+
+    def set_version
+      @version = PaperTrail::Version.find_by(item_id: @post, id: params[:version_id])
     end
 
     # Only allow a list of trusted parameters through.
