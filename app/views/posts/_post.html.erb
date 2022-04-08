@@ -1,0 +1,11 @@
+<div id="<%= dom_id post %>">
+
+<tr>
+      <th><%= post.id %></th>
+      <td><%= post.title %></td>
+      <td><%= post.body %></td>
+      <td><%= link_to "Show", post_path(post.id) %></td>
+      <td><%= link_to "Versions", versions_post_path(post.id) %></td>
+    </tr>
+  
+</div>
